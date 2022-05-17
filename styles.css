@@ -100,6 +100,9 @@ label {
   width: 100%;
   padding-bottom: 1rem;
 }
+.form__decision {
+  padding: 1em 0;
+}
 
 .sign-input {
   height: 2rem;
