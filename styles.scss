@@ -22,12 +22,26 @@
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    animation: glow 2s ease-in-out infinite alternate;
 
     @media (min-width: 768px) {
       align-items: center;
       flex-direction: row;
       justify-content: space-around;
       padding: 2rem;
+      margin: 2rem;
+    }
+  }
+
+  @-webkit-keyframes glow {
+    from {
+      box-shadow: 0 0 5px rgb(101, 40, 123), 0 0 10px rgb(75, 3, 71),
+        0 0 15px #57186c, 0 0 20px #2B0D51, 0 0 25px #2B0D51, 0 0 30px #2B0D51,
+        0 0 35px #2B0D51;
+    }
+    to {
+      box-shadow: 0 0 10px rgb(114, 13, 151), 0 0 15px #4A066A, 0 0 20px #4A066A,
+        0 0 25px #4A066A, 0 0 30px #4A066A, 0 0 35px #4A066A, 0 0 40px #4A066A;
     }
   }
 
@@ -65,22 +79,24 @@
   }
 
   &__img-box {
-     display: none;
-
+    display: none;
+    
     @media (min-width: 768px) {
       display: flex;
       padding: 1em;
       width: 40%;
     }
-
+    
     @media (min-width: 1440px) {
       width: 40%;
       margin: 1em;
       margin-top: 2em;
     }
   }
-
+  
   &__img {
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 100%;
   }
 }
@@ -102,9 +118,8 @@ label {
 
   &__sign-inputs {
     width: 100%;
-    padding-bottom: 1rem;
   }
-  
+
   &__decision {
       padding: 1em 0; 
     }
@@ -113,12 +128,24 @@ label {
 .sign-input {
   height: 2rem;
   border-radius: 0.25rem;
+  padding-left: 6px;
 }
-
 
 .birthday-input {
   height: 2rem;
   border-radius: 0.25rem;
   border-style: none;
+  padding-left: 6px;
+  
+  &:focus {
+    outline-width: 0;
+  }
+  &--error {
+    border-style: unset;
+    border: 2px solid rgb(255, 0, 0);
+  }
 }
 
+.birthday-input::placeholder {
+  padding-left: 6px;
+}

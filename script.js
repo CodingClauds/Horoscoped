@@ -1,13 +1,14 @@
-//////////////////////////
-////////////////////////// If user selects sign with drop down.//////////////////////////
-//////////////////////////
 function myFunction() {
   let selectedSign = document.getElementById("selectedSign").value;
   sign = selectedSign;
-  // document.getElementById("output").innerHTML = "You sign is: " + selectedSign;
+  
+  const birthdayInput = document.querySelector(".birthday-input");
+  birthdayInput.classList.remove("birthday-input--error");
+  birthdayInput.value = "";
+  
   let displayedSign = document.querySelector(".app__sign");
   displayedSign.textContent = selectedSign;
-
+  
   fetch("https://aztro.sameerkumar.website?sign=" + sign + "&day=today", {
     method: "POST",
   })
@@ -17,61 +18,68 @@ function myFunction() {
       const description = data.description;
       const currentDate = data.current_date;
       const color = data.color;
-      console.log(currentDate);
-
+     
       let currentDateEl = document.querySelector(".app__current-date");
       currentDateEl.textContent = currentDate;
-
       let dateRangeEl = document.querySelector(".app__date-range");
       dateRangeEl.textContent = dateRange;
-
       let descriptionEl = document.querySelector(".app__description");
       descriptionEl.textContent = description;
     });
 }
-
-////////////////////////
-//user inputs their birthday///
-////////////////////////
-const birthdayInput = document.querySelector(".birthday-input");
-birthdayInput.addEventListener("input", (e) => {
-  let userBirthdayInput = e.target.value;
-  if (userBirthdayInput.length == 5) {
+    const birthdayInput = document.querySelector(".birthday-input");
+    birthdayInput.addEventListener("input", (e) => {
+    let userBirthdayInput = e.target.value;
+  if (userBirthdayInput.length == 5 && userBirthdayInput[2] == "/") {
+    birthdayInput.classList.remove("birthday-input--error");
     let day = userBirthdayInput.slice(3);
     let month = userBirthdayInput.slice(0, -3);
-
-    testFunc(month, day);
-
-    function byDate() {
-      // document.getElementById("output").innerHTML = "You sign is: " + selectedSign;
+    let currentDateEl = document.querySelector(".app__current-date");
+    let dateRangeEl = document.querySelector(".app__date-range");
+    let descriptionEl = document.querySelector(".app__description");
+    if (day < 1 || day > 31) {
       let displayedSign = document.querySelector(".app__sign");
-      displayedSign.textContent = sign;
-
-      fetch("https://aztro.sameerkumar.website?sign=" + sign + "&day=today", {
-        method: "POST",
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          const dateRange = data.date_range;
-          const description = data.description;
-          const currentDate = data.current_date;
-          const color = data.color;
-          console.log(currentDate);
-
-          let currentDateEl = document.querySelector(".app__current-date");
-          currentDateEl.textContent = currentDate;
-
-          let dateRangeEl = document.querySelector(".app__date-range");
-          dateRangeEl.textContent = dateRange;
-
-          let descriptionEl = document.querySelector(".app__description");
-          descriptionEl.textContent = description;
-        });
+      displayedSign.textContent = "Please enter a valid day";
+      // currentDateEl.textContent = "";
+      dateRangeEl.textContent = "";
+      descriptionEl.textContent = "";
+      birthdayInput.classList.add("birthday-input--error");
+    } else if (month < 1 || month > 12) {
+      let displayedSign = document.querySelector(".app__sign");
+      displayedSign.textContent = "Please enter a valid month";
+      // currentDateEl.textContent = "";
+      dateRangeEl.textContent = "";
+      descriptionEl.textContent = "";
+      birthdayInput.classList.add("birthday-input--error");
+    } else {
+      testFunc(month, day);
+      function byDate() {
+        let displayedSign = document.querySelector(".app__sign");
+        displayedSign.textContent = sign;
+        fetch("https://aztro.sameerkumar.website?sign=" + sign + "&day=today", {
+          method: "POST",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const dateRange = data.date_range;
+            const description = data.description;
+            // const currentDate = data.current_date;
+            const color = data.color;
+            // console.log(currentDate);
+            let currentDateEl = document.querySelector(".app__current-date");
+            // currentDateEl.textContent = currentDate;
+            let dateRangeEl = document.querySelector(".app__date-range");
+            dateRangeEl.textContent = dateRange;
+            let descriptionEl = document.querySelector(".app__description");
+            descriptionEl.textContent = description;
+          });
+      }
+      byDate();
     }
-    byDate();
+  } else {
+    birthdayInput.classList.add("birthday-input--error");
   }
 });
-
 function testFunc(month, day) {
   let astro_sign = "";
   if (month == "12") {
@@ -114,6 +122,32 @@ function testFunc(month, day) {
   }
   sign = astro_sign;
 }
-
 let sign = "aries";
-myFunction();
+
+function onPageLoad() {
+  let selectedSign = document.getElementById("selectedSign").value;
+  sign = selectedSign;
+  const birthdayInput = document.querySelector(".birthday-input");
+  birthdayInput.classList.remove("birthday-input--error");
+  birthdayInput.value = "";
+  let displayedSign = document.querySelector(".app__sign");
+  displayedSign.textContent = selectedSign;
+  fetch("https://aztro.sameerkumar.website?sign=" + sign + "&day=today", {
+    method: "POST",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const dateRange = data.date_range;
+      const description = data.description;
+      const currentDate = data.current_date;
+      const color = data.color;
+      console.log(currentDate);
+      let currentDateEl = document.querySelector(".app__current-date");
+      currentDateEl.textContent = currentDate;
+      let dateRangeEl = document.querySelector(".app__date-range");
+      dateRangeEl.textContent = dateRange;
+      let descriptionEl = document.querySelector(".app__description");
+      descriptionEl.textContent = description;
+    });
+}
+onPageLoad();
