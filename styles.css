@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url("./photos/jeremy-bishop-bAXBuCBHfRc-unsplash.jpg");
+  background-position: center;
+}
+.app__container {
+  background-color: rgba(0, 0, 0, 0.7);
+  min-height: 90vh;
+  width: 90%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+@media (min-width: 768px) {
+  .app__container {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 2rem;
+  }
+}
+.app__content-wrapper {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .app__content-wrapper {
+    align-items: flex-start;
+    margin-top: 2em;
+  }
+}
+.app__title {
+  padding-top: 1em;
+}
+@media (min-width: 1440px) {
+  .app__title {
+    padding: 1em 0;
+    font-size: 3em;
+  }
+}
+.app__sign {
+  margin-top: 1em;
+}
+.app__description {
+  line-height: 1.5;
+  height: 8rem;
+  max-width: 25rem;
+  font-size: 0.875rem;
+}
+.app__img-box {
+  display: none;
+}
+@media (min-width: 768px) {
+  .app__img-box {
+    display: flex;
+    padding: 1em;
+    width: 40%;
+  }
+}
+@media (min-width: 1440px) {
+  .app__img-box {
+    width: 40%;
+    margin: 1em;
+    margin-top: 2em;
+  }
+}
+.app__img {
+  width: 100%;
+}
+
+body {
+  color: white;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+}
+
+label {
+  color: white;
+}
+
+.form__birthday-inputs {
+  width: 100%;
+}
+.form__sign-inputs {
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.sign-input {
+  height: 2rem;
+  border-radius: 0.25rem;
+}
+
+.birthday-input {
+  height: 2rem;
+  border-radius: 0.25rem;
+  border-style: none;
+}
