@@ -14,12 +14,10 @@
 
   &__container {
     background-color: rgb(0, 0, 0, 0.7);
-    min-height: 90vh;
-    width: 90%;
+    width: 80%;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding: 1rem;
     animation: glow 2s ease-in-out infinite alternate;
@@ -31,17 +29,21 @@
       padding: 2rem;
       margin: 2rem;
     }
+
+    @media (min-width: 1280px) {
+      min-height: 53vh;
+    }
   }
 
-  @-webkit-keyframes glow {
+  @keyframes glow {
     from {
       box-shadow: 0 0 5px rgb(101, 40, 123), 0 0 10px rgb(75, 3, 71),
-        0 0 15px #57186c, 0 0 20px #2B0D51, 0 0 25px #2B0D51, 0 0 30px #2B0D51,
-        0 0 35px #2B0D51;
+        0 0 15px #57186c, 0 0 20px #2b0d51, 0 0 25px #2b0d51, 0 0 30px #2b0d51,
+        0 0 35px #2b0d51;
     }
     to {
-      box-shadow: 0 0 10px rgb(114, 13, 151), 0 0 15px #4A066A, 0 0 20px #4A066A,
-        0 0 25px #4A066A, 0 0 30px #4A066A, 0 0 35px #4A066A, 0 0 40px #4A066A;
+      box-shadow: 0 0 10px rgb(114, 13, 151), 0 0 15px #4a066a, 0 0 20px #4a066a,
+        0 0 25px #4a066a, 0 0 30px #4a066a, 0 0 35px #4a066a, 0 0 40px #4a066a;
     }
   }
 
@@ -55,18 +57,22 @@
     @media (min-width: 768px) {
       align-items: flex-start;
       margin-top: 2em;
+      flex: 0.9;
     }
   }
 
   &__title {
-    padding-top: 1em;
+    padding-top: 3.5rem;
+    @media (min-width: 768px) {
+      padding-top: 0rem;
+    }
 
     @media (min-width: 1440px) {
       padding: 1em 0;
       font-size: 3em;
     }
   }
-  
+
   &__sign {
     margin-top: 1em;
   }
@@ -76,24 +82,28 @@
     height: 8rem;
     max-width: 25rem;
     font-size: 0.875rem;
+
+    @media (min-width: 600px) {
+      font-size: 1rem;
+    }
   }
 
   &__img-box {
     display: none;
-    
-    @media (min-width: 768px) {
+
+    @media (min-width: 900px) {
       display: flex;
       padding: 1em;
       width: 40%;
     }
-    
+
     @media (min-width: 1440px) {
       width: 40%;
       margin: 1em;
       margin-top: 2em;
     }
   }
-  
+
   &__img {
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -121,8 +131,8 @@ label {
   }
 
   &__decision {
-      padding: 1em 0; 
-    }
+    padding: 1em 0;
+  }
 }
 
 .sign-input {
@@ -136,10 +146,15 @@ label {
   border-radius: 0.25rem;
   border-style: none;
   padding-left: 6px;
-  
+
   &:focus {
     outline-width: 0;
   }
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+
   &--error {
     border-style: unset;
     border: 2px solid rgb(255, 0, 0);
@@ -148,4 +163,14 @@ label {
 
 .birthday-input::placeholder {
   padding-left: 6px;
+}
+
+.bottom__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  @media (min-width: 1280px) {
+    height: 15rem;
+    width: 100%;
+  }
 }
