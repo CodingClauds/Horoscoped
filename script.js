@@ -32,11 +32,13 @@ birthdayInput.addEventListener("input", (e) => {
   let userBirthdayInput = e.target.value;
   if (userBirthdayInput.length == 5 && userBirthdayInput[2] == "/") {
     birthdayInput.classList.remove("birthday-input--error");
+
     let day = userBirthdayInput.slice(3);
     let month = userBirthdayInput.slice(0, -3);
-    let currentDateEl = document.querySelector(".app__current-date");
+    // let currentDateEl = document.querySelector(".app__current-date");
     let dateRangeEl = document.querySelector(".app__date-range");
     let descriptionEl = document.querySelector(".app__description");
+
     if (day < 1 || day > 31) {
       let displayedSign = document.querySelector(".app__sign");
       displayedSign.textContent = "Please enter a valid day";
@@ -64,9 +66,9 @@ birthdayInput.addEventListener("input", (e) => {
             const dateRange = data.date_range;
             const description = data.description;
             // const currentDate = data.current_date;
-            const color = data.color;
+            // const color = data.color;
             // console.log(currentDate);
-            let currentDateEl = document.querySelector(".app__current-date");
+            // let currentDateEl = document.querySelector(".app__current-date");
             // currentDateEl.textContent = currentDate;
             let dateRangeEl = document.querySelector(".app__date-range");
             dateRangeEl.textContent = dateRange;
