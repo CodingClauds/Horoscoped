@@ -1,14 +1,14 @@
 function myFunction() {
   let selectedSign = document.getElementById("selectedSign").value;
   sign = selectedSign;
-  
+
   const birthdayInput = document.querySelector(".birthday-input");
   birthdayInput.classList.remove("birthday-input--error");
   birthdayInput.value = "";
-  
+
   let displayedSign = document.querySelector(".app__sign");
   displayedSign.textContent = selectedSign;
-  
+
   fetch("https://aztro.sameerkumar.website?sign=" + sign + "&day=today", {
     method: "POST",
   })
@@ -18,7 +18,7 @@ function myFunction() {
       const description = data.description;
       const currentDate = data.current_date;
       const color = data.color;
-     
+
       let currentDateEl = document.querySelector(".app__current-date");
       currentDateEl.textContent = currentDate;
       let dateRangeEl = document.querySelector(".app__date-range");
@@ -27,9 +27,9 @@ function myFunction() {
       descriptionEl.textContent = description;
     });
 }
-    const birthdayInput = document.querySelector(".birthday-input");
-    birthdayInput.addEventListener("input", (e) => {
-    let userBirthdayInput = e.target.value;
+const birthdayInput = document.querySelector(".birthday-input");
+birthdayInput.addEventListener("input", (e) => {
+  let userBirthdayInput = e.target.value;
   if (userBirthdayInput.length == 5 && userBirthdayInput[2] == "/") {
     birthdayInput.classList.remove("birthday-input--error");
     let day = userBirthdayInput.slice(3);
@@ -111,12 +111,12 @@ function testFunc(month, day) {
     else astro_sign = "Virgo";
   } else if (month == "09") {
     if (day < 23) astro_sign = "Virgo";
-    else astro_sign = "libra";
+    else astro_sign = "Libra";
   } else if (month == "10") {
     if (day < 23) astro_sign = "Libra";
     else astro_sign = "Scorpio";
   } else if (month == "11") {
-    if (day < 22) astro_sign = "scorpio";
+    if (day < 22) astro_sign = "Scorpio";
     else astro_sign = "Sagittarius";
   } else {
   }
@@ -141,7 +141,7 @@ function onPageLoad() {
       const description = data.description;
       const currentDate = data.current_date;
       const color = data.color;
-      console.log(currentDate);
+
       let currentDateEl = document.querySelector(".app__current-date");
       currentDateEl.textContent = currentDate;
       let dateRangeEl = document.querySelector(".app__date-range");
@@ -150,4 +150,5 @@ function onPageLoad() {
       descriptionEl.textContent = description;
     });
 }
+
 onPageLoad();
